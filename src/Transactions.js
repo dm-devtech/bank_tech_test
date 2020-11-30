@@ -26,7 +26,7 @@ export default class Transactions {
     }
   }
 
-  format() {
+  createStatement() {
     var i;
     for (i = 0; i < this.allTransactions.length; i++) {
       if(this.allTransactions[i]['type'] === 'withdraw') {
@@ -39,7 +39,7 @@ export default class Transactions {
 
   printStatement() {
     this.balanceUpdate()
-    this.format()
+    this.createStatement()
     return this.statementHeader+this.statementDetail
   }
 
