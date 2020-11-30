@@ -1,11 +1,11 @@
 class Transactions {
 
   constructor() {
-    this.transactions = []
+    this.allTransactions = []
   }
 
   deposit(amount, date) {
-    this.transactions.push({date: date, type: 'deposit', amount: amount})
+    this.allTransactions.push({date: date, type: 'deposit', amount: amount})
   }
 
 }
