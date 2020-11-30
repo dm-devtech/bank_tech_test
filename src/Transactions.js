@@ -2,8 +2,8 @@ export default class Transactions {
 
   constructor() {
     this.allTransactions = []
-    this.printHeader = "date || credit || debit || balance\n"
-    this.statement = ""
+    this.statementHeader = "date || credit || debit || balance\n"
+    this.statementDetail = ""
     this.balance = 0
   }
 
@@ -15,22 +15,32 @@ export default class Transactions {
     this.allTransactions.push({date: date, type: 'withdraw', amount: amount})
   }
 
-  format() {
+  balanceUpdate() {
     var i;
     for (i = 0; i < this.allTransactions.length; i++) {
       if(this.allTransactions[i]['type'] === 'withdraw') {
         this.balance -= Number(this.allTransactions[i]['amount'])
-        this.statement += `${this.allTransactions[i]['date']} || || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || ${Number(this.balance).toFixed(2)}`
       } else if(this.allTransactions[i]['type'] === 'deposit') {
         this.balance += Number(this.allTransactions[i]['amount'])
-        this.statement += `${this.allTransactions[i]['date']} || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || || ${Number(this.balance).toFixed(2)}`
+      }
+    }
+  }
+
+  format() {
+    var i;
+    for (i = 0; i < this.allTransactions.length; i++) {
+      if(this.allTransactions[i]['type'] === 'withdraw') {
+        this.statementDetail += `${this.allTransactions[i]['date']} || || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || ${Number(this.balance).toFixed(2)}`
+      } else if(this.allTransactions[i]['type'] === 'deposit') {
+        this.statementDetail += `${this.allTransactions[i]['date']} || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || || ${Number(this.balance).toFixed(2)}`
       }
     }
   }
 
   printStatement() {
+    this.balanceUpdate()
     this.format()
-    return this.printHeader+this.statement
+    return this.statementHeader+this.statementDetail
   }
 
 }
