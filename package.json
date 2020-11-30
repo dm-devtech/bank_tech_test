@@ -1,0 +1,33 @@
+{
+  "scripts": {
+    "test": "jest"
+  },
+  "name": "bank-tech-test",
+  "description": "Bank Tech Test",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "Transactions.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dm-devtech/bank_tech_test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dm-devtech/bank_tech_test/issues"
+  },
+  "homepage": "https://github.com/dm-devtech/bank_tech_test#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.12.7",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "ts-node": "^9.0.0"
+  },
+  "dependencies": {
+    "ts-jest": "^26.4.4"
+  }
+}
