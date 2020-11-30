@@ -1,4 +1,4 @@
-class Transactions {
+export default class Transactions {
 
   constructor() {
     this.allTransactions = []
