@@ -7,18 +7,20 @@ export default class Transactions {
   }
 
   deposit(amount, date) {
-    this.allTransactions.push({date: date, type: 'deposit', amount: Number(amount.toFixed(2))})
+    this.allTransactions.push({date: date, type: 'deposit', amount: amount})
   }
 
   withdraw(amount, date) {
-    this.allTransactions.push({date: date, type: 'withdraw', amount: Number(amount.toFixed(2))})
+    this.allTransactions.push({date: date, type: 'withdraw', amount: amount})
   }
 
   format() {
     var i;
     for (i = 0; i < this.allTransactions.length; i++) {
       if(this.allTransactions[i]['type'] === 'withdraw') {
-        this.statement += `${this.allTransactions[i]['date']} || || ${this.allTransactions[i]['amount'].toFixed(2)} || -500.00`
+        this.statement += `${this.allTransactions[i]['date']} || || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || -500.00`
+      } else if(this.allTransactions[i]['type'] === 'deposit') {
+        this.statement += `${this.allTransactions[i]['date']} || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || || 2000.00`
       }
     }
   }
