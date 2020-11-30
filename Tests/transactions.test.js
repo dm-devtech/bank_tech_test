@@ -22,3 +22,14 @@ describe('testing deposit function', () => {
   })
 
 })
+
+describe('testing withdraw function', () => {
+  test('withdraw transaction is saved to transactions object', () =>{
+    const testTransactions = new Transactions;
+    testTransactions.withdraw(500, '14-01-2012')
+    expect(testTransactions.allTransactions[0]['date']).toBe('14-01-2012')
+    expect(testTransactions.allTransactions[0]['type']).toBe('withdraw')
+    expect(testTransactions.allTransactions[0]['amount']).toBe(500)
+  })
+
+})
