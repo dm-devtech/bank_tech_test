@@ -1,5 +1,6 @@
 import Transactions from '../src/Transactions.js'
 
+describe('testing deposit function', () => {
   test('deposit transaction is saved to transactions object', () =>{
     const testTransactions = new Transactions;
     testTransactions.deposit(1000, '10-01-2012')
@@ -19,3 +20,5 @@ import Transactions from '../src/Transactions.js'
     expect(testTransactions.allTransactions[1]['type']).toBe('deposit')
     expect(testTransactions.allTransactions[1]['amount']).toBe(7000)
   })
+
+})
