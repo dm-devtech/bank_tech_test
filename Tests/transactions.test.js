@@ -32,4 +32,16 @@ describe('testing withdraw function', () => {
     expect(testTransactions.allTransactions[0]['amount']).toBe(500)
   })
 
+  test('withdraw transaction is saved to transactions object', () =>{
+    const testTransactions = new Transactions
+    testTransactions.withdraw(8000, '17-01-2012')
+    testTransactions.withdraw(3000, '19-01-2012')
+    expect(testTransactions.allTransactions[0]['date']).toBe('17-01-2012')
+    expect(testTransactions.allTransactions[0]['type']).toBe('withdraw')
+    expect(testTransactions.allTransactions[0]['amount']).toBe(8000)
+    expect(testTransactions.allTransactions[1]['date']).toBe('19-01-2012')
+    expect(testTransactions.allTransactions[1]['type']).toBe('withdraw')
+    expect(testTransactions.allTransactions[1]['amount']).toBe(3000)
+  })
+
 })
