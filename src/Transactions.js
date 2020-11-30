@@ -4,6 +4,7 @@ export default class Transactions {
     this.allTransactions = []
     this.printHeader = "date || credit || debit || balance\n"
     this.statement = ""
+    this.balance = 0
   }
 
   deposit(amount, date) {
@@ -18,7 +19,8 @@ export default class Transactions {
     var i;
     for (i = 0; i < this.allTransactions.length; i++) {
       if(this.allTransactions[i]['type'] === 'withdraw') {
-        this.statement += `${this.allTransactions[i]['date']} || || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || -500.00`
+        this.balance -= Number(this.allTransactions[i]['amount'])
+        this.statement += `${this.allTransactions[i]['date']} || || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || ${Number(this.balance).toFixed(2)}`
       } else if(this.allTransactions[i]['type'] === 'deposit') {
         this.statement += `${this.allTransactions[i]['date']} || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || || 2000.00`
       }
