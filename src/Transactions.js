@@ -22,7 +22,8 @@ export default class Transactions {
         this.balance -= Number(this.allTransactions[i]['amount'])
         this.statement += `${this.allTransactions[i]['date']} || || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || ${Number(this.balance).toFixed(2)}`
       } else if(this.allTransactions[i]['type'] === 'deposit') {
-        this.statement += `${this.allTransactions[i]['date']} || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || || 2000.00`
+        this.balance += Number(this.allTransactions[i]['amount'])
+        this.statement += `${this.allTransactions[i]['date']} || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || || ${Number(this.balance).toFixed(2)}`
       }
     }
   }
