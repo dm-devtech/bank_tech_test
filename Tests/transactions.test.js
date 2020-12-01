@@ -1,3 +1,5 @@
+'use strict'
+
 import Transactions from '../src/Transactions.js'
 
 describe('testing deposit function', () => {
