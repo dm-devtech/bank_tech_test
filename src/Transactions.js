@@ -13,6 +13,7 @@ export default class Transactions {
 
   deposit(amount, date) {
     if (amount < 0) throw new Error('You cannot enter a negative number');
+    if(date.split("").includes("/"||".")) throw new Error('Date format should be DD-MM-YYYY');
     this.allTransactions.push({date: date, type: 'deposit', amount: amount})
   }
 

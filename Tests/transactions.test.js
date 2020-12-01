@@ -86,6 +86,10 @@ describe('testing Transactions class', () => {
     test('error raised when date format entered in incorrect format to withdraw function', () =>{
       expect(() => {testTransactions.withdraw(500, '14/01/2012')}).toThrowError('Date format should be DD-MM-YYYY');
     })
+
+    test('error raised when date format entered in incorrect format to deposit function', () =>{
+      expect(() => {testTransactions.deposit(500, '14/01/2012')}).toThrowError('Date format should be DD-MM-YYYY');
+    })
   })
 
 })
