@@ -6,8 +6,6 @@ export default class Transactions {
 
   constructor(newStatement = new Statement) {
     this.allTransactions = []
-    this.statementHeader = "date || credit || debit || balance\n"
-    this.statementDetail = ""
     this.balance = 0
     this.balancePerTransaction = []
     this.newStatement = newStatement
