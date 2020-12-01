@@ -75,6 +75,13 @@ describe('testing Transactions class', () => {
     test('error raises when negative number entered as input to deposit function', () =>{
       expect(() => {testTransactions.deposit(-500, '14-01-2012')}).toThrowError('You cannot enter a negative number');
     })
+
+    test('entering floating point numbers as inputs to withdraw and deposit works correctly', () =>{
+      testTransactions.deposit(1000.50, '10-01-2012')
+      testTransactions.deposit(2000.75, '13-01-2012')
+      testTransactions.withdraw(500.20, '14-01-2012')
+      expect(testTransactions.getBankStatement()).toBe('date || credit || debit || balance\n14-01-2012 || || 500.20 || 2501.05\n13-01-2012 || 2000.75 || || 3001.25\n10-01-2012 || 1000.50 || || 1000.50\n')
+    })
   })
 
 })
