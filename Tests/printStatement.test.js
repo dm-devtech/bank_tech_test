@@ -16,6 +16,13 @@ describe('testing print function', () => {
     expect(testTransactions.getBankStatement()).toEqual('date || credit || debit || balance\n14-01-2012 || || 500.00 || -500.00\n')
   })
 
+  test('testing print format is correct with one deposit transaction', () =>{
+    const testTransactions = new Transactions;
+    const newStatement = new Statement
+    testTransactions.deposit(500, '14-01-2012')
+    expect(testTransactions.getBankStatement()).toEqual('date || credit || debit || balance\n14-01-2012 || 500.00 || || 500.00\n')
+  })
+
   test('testing printed statement is correct with multiple transactions', () =>{
     const testTransactions = new Transactions;
     const newStatement = new Statement
