@@ -19,7 +19,7 @@ export default class Transactions {
     this.allTransactions.push({date: date, type: 'withdraw', amount: amount})
   }
 
-  balanceUpdate() {
+  #balanceUpdate() {
     var i;
     for (i = 0; i < this.allTransactions.length; i++) {
       if(this.allTransactions[i]['type'] === 'deposit') {
@@ -33,7 +33,7 @@ export default class Transactions {
   }
 
   printStatement() {
-    this.balanceUpdate()
+    this.#balanceUpdate()
     return this.newStatement.print(this.allTransactions, this.balancePerTransaction)
   }
 
