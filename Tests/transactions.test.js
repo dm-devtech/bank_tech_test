@@ -51,13 +51,13 @@ describe('testing print function', () => {
   test('testing print format is correct with one withdrawal transaction', () =>{
     const testTransactions = new Transactions;
     testTransactions.withdraw(500, '14-01-2012')
-    expect(testTransactions.printStatement()).toBe('date || credit || debit || balance\n14-01-2012 || || 500.00 || -500.00\n')
+    expect(testTransactions.getBankStatement()).toBe('date || credit || debit || balance\n14-01-2012 || || 500.00 || -500.00\n')
   })
 
   test('testing print format is correct with one deposit transaction', () =>{
     const testTransactions = new Transactions;
     testTransactions.deposit(2000, '11-01-2012')
-    expect(testTransactions.printStatement()).toBe('date || credit || debit || balance\n11-01-2012 || 2000.00 || || 2000.00\n')
+    expect(testTransactions.getBankStatement()).toBe('date || credit || debit || balance\n11-01-2012 || 2000.00 || || 2000.00\n')
   })
 
   test('testing printed statement is correct with multiple transactions', () =>{
@@ -65,6 +65,6 @@ describe('testing print function', () => {
     testTransactions.deposit(1000, '10-01-2012')
     testTransactions.deposit(2000, '13-01-2012')
     testTransactions.withdraw(500, '14-01-2012')
-    expect(testTransactions.printStatement()).toBe('date || credit || debit || balance\n14-01-2012 || || 500.00 || 2500.00\n13-01-2012 || 2000.00 || || 3000.00\n10-01-2012 || 1000.00 || || 1000.00\n')
+    expect(testTransactions.getBankStatement()).toBe('date || credit || debit || balance\n14-01-2012 || || 500.00 || 2500.00\n13-01-2012 || 2000.00 || || 3000.00\n10-01-2012 || 1000.00 || || 1000.00\n')
   })
 })

@@ -32,7 +32,7 @@ export default class Transactions {
     }
   }
 
-  printStatement() {
+  getBankStatement() {
     this.#balanceUpdate()
     return this.newStatement.print(this.allTransactions, this.balancePerTransaction)
   }
