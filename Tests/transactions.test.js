@@ -82,6 +82,10 @@ describe('testing Transactions class', () => {
       testTransactions.withdraw(500.20, '14-01-2012')
       expect(testTransactions.getBankStatement()).toEqual('date || credit || debit || balance\n14-01-2012 || || 500.20 || 2501.05\n13-01-2012 || 2000.75 || || 3001.25\n10-01-2012 || 1000.50 || || 1000.50\n')
     })
+
+    test('error raised when date format entered in incorrect format to withdraw function', () =>{
+      expect(() => {testTransactions.withdraw(500, '14/01/2012')}).toThrowError('Date format should be DD-MM-YYYY');
+    })
   })
 
 })
