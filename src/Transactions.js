@@ -1,13 +1,16 @@
 'use strict'
 
+import Statement from './Statement.js'
+
 export default class Transactions {
 
-  constructor() {
+  constructor(newStatement = new Statement) {
     this.allTransactions = []
     this.statementHeader = "date || credit || debit || balance\n"
     this.statementDetail = ""
     this.balance = 0
     this.balancePerTransaction = []
+    this.newStatement = newStatement
   }
 
   deposit(amount, date) {
@@ -44,8 +47,7 @@ export default class Transactions {
 
   printStatement() {
     this.balanceUpdate()
-    this.createStatement()
-    return this.statementHeader+this.statementDetail
+    return this.newStatement.print(this.allTransactions, this.balancePerTransaction)
   }
 
 }

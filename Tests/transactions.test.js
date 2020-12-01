@@ -1,6 +1,5 @@
-'use strict'
-
 import Transactions from '../src/Transactions.js'
+import Statement from '../src/Statement.js'
 
 describe('testing deposit function', () => {
   test('deposit transaction is saved to transactions object', () =>{
