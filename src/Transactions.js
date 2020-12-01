@@ -12,16 +12,12 @@ export default class Transactions {
   }
 
   deposit(amount, date) {
-    if(amount < 0) {
-      throw new Error('You cannot enter a negative number')
-    }
+    if (amount < 0) throw new Error('You cannot enter a negative number');
     this.allTransactions.push({date: date, type: 'deposit', amount: amount})
   }
 
   withdraw(amount, date) {
-    if(amount < 0) {
-      throw new Error('You cannot enter a negative number')
-    }
+    if(amount < 0) throw new Error('You cannot enter a negative number')
     this.allTransactions.push({date: date, type: 'withdraw', amount: amount})
   }
 
