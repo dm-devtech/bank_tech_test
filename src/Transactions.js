@@ -1,3 +1,5 @@
+'use strict'
+
 export default class Transactions {
 
   constructor() {
@@ -5,6 +7,7 @@ export default class Transactions {
     this.statementHeader = "date || credit || debit || balance\n"
     this.statementDetail = ""
     this.balance = 0
+    this.balancePerTransaction = []
   }
 
   deposit(amount, date) {
@@ -18,10 +21,12 @@ export default class Transactions {
   balanceUpdate() {
     var i;
     for (i = 0; i < this.allTransactions.length; i++) {
-      if(this.allTransactions[i]['type'] === 'withdraw') {
-        this.balance -= Number(this.allTransactions[i]['amount'])
-      } else if(this.allTransactions[i]['type'] === 'deposit') {
-        this.balance += Number(this.allTransactions[i]['amount'])
+      if(this.allTransactions[i]['type'] === 'deposit') {
+        let statementBalance = this.balance += this.allTransactions[i]['amount']
+        this.balancePerTransaction.push(statementBalance)
+      }else if(this.allTransactions[i]['type'] === 'withdraw') {
+        let statementBalance = this.balance -= this.allTransactions[i]['amount']
+        this.balancePerTransaction.push(statementBalance)
       }
     }
   }
@@ -30,9 +35,9 @@ export default class Transactions {
     var i;
     for (i = 0; i < this.allTransactions.length; i++) {
       if(this.allTransactions[i]['type'] === 'withdraw') {
-        this.statementDetail += `${this.allTransactions[i]['date']} || || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || ${Number(this.balance).toFixed(2)}`
+        this.statementDetail += `${this.allTransactions[i]['date']} || || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || ${Number(this.balancePerTransaction[i]).toFixed(2)}\n`
       } else if(this.allTransactions[i]['type'] === 'deposit') {
-        this.statementDetail += `${this.allTransactions[i]['date']} || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || || ${Number(this.balance).toFixed(2)}`
+        this.statementDetail += `${this.allTransactions[i]['date']} || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || || ${Number(this.balancePerTransaction[i]).toFixed(2)}\n`
       }
     }
   }
