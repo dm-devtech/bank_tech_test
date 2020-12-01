@@ -34,17 +34,6 @@ export default class Transactions {
     }
   }
 
-  createStatement() {
-    var i;
-    for (i = 0; i < this.allTransactions.length; i++) {
-      if(this.allTransactions[i]['type'] === 'withdraw') {
-        this.statementDetail += `${this.allTransactions[i]['date']} || || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || ${Number(this.balancePerTransaction[i]).toFixed(2)}\n`
-      } else if(this.allTransactions[i]['type'] === 'deposit') {
-        this.statementDetail += `${this.allTransactions[i]['date']} || ${Number(this.allTransactions[i]['amount']).toFixed(2)} || || ${Number(this.balancePerTransaction[i]).toFixed(2)}\n`
-      }
-    }
-  }
-
   printStatement() {
     this.balanceUpdate()
     return this.newStatement.print(this.allTransactions, this.balancePerTransaction)
