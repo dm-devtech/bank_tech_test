@@ -21,7 +21,6 @@ describe('testing deposit function', () => {
     expect(testTransactions.allTransactions[1]['type']).toBe('deposit')
     expect(testTransactions.allTransactions[1]['amount']).toBe(7000.00)
   })
-
 })
 
 describe('testing withdraw function', () => {
@@ -44,7 +43,6 @@ describe('testing withdraw function', () => {
     expect(testTransactions.allTransactions[1]['type']).toBe('withdraw')
     expect(testTransactions.allTransactions[1]['amount']).toBe(3000.00)
   })
-
 })
 
 describe('testing print function', () => {
@@ -66,5 +64,12 @@ describe('testing print function', () => {
     testTransactions.deposit(2000, '13-01-2012')
     testTransactions.withdraw(500, '14-01-2012')
     expect(testTransactions.getBankStatement()).toBe('date || credit || debit || balance\n14-01-2012 || || 500.00 || 2500.00\n13-01-2012 || 2000.00 || || 3000.00\n10-01-2012 || 1000.00 || || 1000.00\n')
+  })
+})
+
+describe('Edge cases', () => {
+  test('error raises when negative number entered as input to withdraw function', () =>{
+    const testTransactions = new Transactions;
+    expect(() => {testTransactions.withdraw(-500, '14-01-2012')}).toThrowError('You cannot enter a negative number');
   })
 })
