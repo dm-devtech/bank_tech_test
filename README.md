@@ -35,11 +35,6 @@ newTransactions.getBankStatement()
 5. In the terminal run 'npm test'
 6. To see coverage run jest --coverage
 
-### Edge cases
-- User cannot enter negative number to withdraw() or deposit()
-- User can enter decimal figure to withdraw() or deposit()
-- Date format should be DD-MM-YYYY.  If date includes / or . then an error will appear.  
-
 ### Test coverage
 -----------------|---------|----------|---------|---------|-------------------
 File             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
@@ -48,3 +43,15 @@ All files        |     100 |    80.95 |     100 |     100 |
  Statement.js    |     100 |       75 |     100 |     100 | 13                
  Transactions.js |     100 |    82.35 |     100 |     100 | 16,22,32          
 -----------------|---------|----------|---------|---------|-------------------
+
+### Edge cases
+- User cannot enter negative number to withdraw() or deposit()
+- User can enter decimal figure to withdraw() or deposit()
+- Date format should be DD-MM-YYYY.  If date includes / or . then an error will appear.  
+
+### User Stories
+- As a user so that I can manage my account I need to be able to deposit and withdraw to my account
+- As a user so that my transactions are dated I need to be able to give a transaction date
+- As a user so that I can see my account status I need to print a bank statement of my transactions
+- As a user so that I can see the movements on my account I need to see a balance on my statement that updates for each transaction
+- As a user so that I can identify deposits and withdrawals on my statement, withdrawals should be debits and deposits should be credits
