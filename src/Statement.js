@@ -1,4 +1,6 @@
-export default class Statement {
+'use strict'
+
+class Statement {
 
   constructor() {
     this.statementHeader = "date || credit || debit || balance\n"

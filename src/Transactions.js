@@ -1,8 +1,6 @@
 'use strict'
 
-import Statement from '../src/Statement.js'
-
-export default class Transactions {
+class Transactions {
 
   constructor(newStatement = new Statement) {
     this.allTransactions = []

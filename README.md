@@ -30,8 +30,8 @@ newTransactions.getBankStatement()
 ### Running tests
 1. Clone repo to your local directory if you have not already
 2. Install Jest/Babel
-3. Amend line 1 in each class file (src/Statement.js and src/Transactions.js)to 'export default class <class name>'
-4. Uncomment line 3 in src/Transactions.js (// import Statement from '../src/Statement.js')
+3. Amend line 1 in each class file (src/Statement.js and src/Transactions.js)to 'export default class <class name>'.  'class Transactions' would become 'export default class Transactions'  The same would have to be done for the Statement.js file
+4. In src/Transactions.js add the line: 'import Statement from '../src/Statement.js'
 5. In the terminal run 'npm test'
 6. To see coverage run jest --coverage
 
