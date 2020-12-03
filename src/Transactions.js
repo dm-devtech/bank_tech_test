@@ -1,6 +1,8 @@
 'use strict'
 
-class Transactions {
+import Statement from '../src/Statement.js'
+
+export default class Transactions {
 
   constructor(newStatement = new Statement) {
     this.allTransactions = []
@@ -12,13 +14,15 @@ class Transactions {
   deposit(amount, date) {
     if (amount < 0) throw new Error('You cannot enter a negative number');
     if (date.split("").includes("/"||".")) throw new Error('Date format should be DD-MM-YYYY');
-    this.allTransactions.push({date: date, type: 'deposit', amount: amount})
+    let newDateFormat = date.replace("-", "/").replace("-", "/")
+    this.allTransactions.push({date: newDateFormat, type: 'deposit', amount: amount})
   }
 
   withdraw(amount, date) {
     if (amount < 0) throw new Error('You cannot enter a negative number')
     if (date.split("").includes("/"||".")) throw new Error('Date format should be DD-MM-YYYY')
-    this.allTransactions.push({date: date, type: 'withdraw', amount: amount})
+    let newDateFormat = date.replace("-", "/").replace("-", "/")
+    this.allTransactions.push({date: newDateFormat, type: 'withdraw', amount: amount})
   }
 
   #balanceUpdate() {
