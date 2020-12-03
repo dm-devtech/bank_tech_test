@@ -26,7 +26,7 @@ export default class Transactions {
   }
 
   #balanceUpdate() {
-    var i;
+    let i;
     for (i = 0; i < this.allTransactions.length; i++) {
       const transaction = this.allTransactions[i];
       if(transaction.type === 'deposit') {
