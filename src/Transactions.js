@@ -28,11 +28,12 @@ export default class Transactions {
   #balanceUpdate() {
     var i;
     for (i = 0; i < this.allTransactions.length; i++) {
-      if(this.allTransactions[i]['type'] === 'deposit') {
-        let statementBalance = this.balance += this.allTransactions[i]['amount']
+      const transaction = this.allTransactions[i];
+      if(transaction.type === 'deposit') {
+        let statementBalance = this.balance += transaction.amount
         this.balancePerTransaction.push(statementBalance)
-      }else if(this.allTransactions[i]['type'] === 'withdraw') {
-        let statementBalance = this.balance -= this.allTransactions[i]['amount']
+      }else if(transaction.type === 'withdraw') {
+        let statementBalance = this.balance -= transaction.amount
         this.balancePerTransaction.push(statementBalance)
       }
     }
