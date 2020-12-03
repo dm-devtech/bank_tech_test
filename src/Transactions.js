@@ -7,7 +7,6 @@ export default class Transactions {
   constructor(newStatement = new Statement()) {
     this.allTransactions = []
     this.balance = 0
-    this.balancePerTransaction = []
     this.newStatement = newStatement
   }
 
