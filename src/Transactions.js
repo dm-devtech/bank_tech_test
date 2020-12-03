@@ -26,22 +26,23 @@ export default class Transactions {
   }
 
   #balanceUpdate() {
-    let i;
-    for (i = 0; i < this.allTransactions.length; i++) {
+    let balancePerTransaction = []
+    for (let i = 0; i < this.allTransactions.length; i++) {
       const transaction = this.allTransactions[i];
       if(transaction.type === 'deposit') {
         let statementBalance = this.balance += transaction.amount
-        this.balancePerTransaction.push(statementBalance)
+        balancePerTransaction.push(statementBalance)
       }else if(transaction.type === 'withdraw') {
         let statementBalance = this.balance -= transaction.amount
-        this.balancePerTransaction.push(statementBalance)
+        balancePerTransaction.push(statementBalance)
       }
     }
+    return balancePerTransaction
   }
 
   getBankStatement() {
-    this.#balanceUpdate()
-    return this.newStatement.print(this.allTransactions, this.balancePerTransaction)
+    const balancePerTransaction = this.#balanceUpdate()
+    return this.newStatement.print(this.allTransactions, balancePerTransaction)
   }
 
 }
