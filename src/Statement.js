@@ -4,7 +4,6 @@ export default class Statement {
 
   constructor() {
     this.statementHeader = "date || credit || debit || balance\n"
-    this.statementDetail = ""
   }
 
   decimalise(amount) {
@@ -12,15 +11,16 @@ export default class Statement {
   }
 
   print(allTransactions, balancePerTransaction) {
+    let statementDetail = ""
     for (let i = allTransactions.length - 1; i >= 0; i--) {
       const transaction = allTransactions[i];
       if(transaction.type === 'withdraw') {
-        this.statementDetail += `${transaction.date} || || ${this.decimalise(transaction.amount)} || ${this.decimalise(balancePerTransaction[i])}\n`
+        statementDetail += `${transaction.date} || || ${this.decimalise(transaction.amount)} || ${this.decimalise(balancePerTransaction[i])}\n`
       } else if(allTransactions[i]['type'] === 'deposit') {
-        this.statementDetail += `${transaction.date} || ${this.decimalise(transaction.amount)} || || ${this.decimalise(balancePerTransaction[i])}\n`
+        statementDetail += `${transaction.date} || ${this.decimalise(transaction.amount)} || || ${this.decimalise(balancePerTransaction[i])}\n`
       }
     }
-    return this.statementHeader+this.statementDetail
+    return this.statementHeader+statementDetail
   }
 
 }
