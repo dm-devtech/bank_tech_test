@@ -6,8 +6,8 @@ describe('PrintStatement class', () => {
   let testStatement;
 
   beforeEach(() => {
-    testTransactions = new Transactions;
-    testStatement = new Statement;
+    testTransactions = new Transactions();
+    testStatement = new Statement();
   });
 
   describe('Testing statementHeader', () => {

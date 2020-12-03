@@ -4,7 +4,7 @@ import Statement from '../src/Statement.js'
 
 export default class Transactions {
 
-  constructor(newStatement = new Statement) {
+  constructor(newStatement = new Statement()) {
     this.allTransactions = []
     this.balance = 0
     this.balancePerTransaction = []
