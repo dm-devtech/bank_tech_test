@@ -10,12 +10,6 @@ describe('PrintStatement class', () => {
     testStatement = new Statement();
   });
 
-  describe('Testing statementHeader', () => {
-    test('returns correct header format from statementHeader variable', () =>{
-      expect(testStatement.statementHeader).toEqual("date || credit || debit || balance\n")
-    })
-  })
-
   describe('testing print function', () => {
     test('testing print format is correct with one withdrawal transaction', () =>{
       testTransactions.withdraw(500, '14-01-2012')
