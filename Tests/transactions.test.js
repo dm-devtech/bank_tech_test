@@ -5,7 +5,7 @@ describe('testing Transactions class', () => {
   let testTransactions;
 
   beforeEach(() => {
-    testTransactions = new Transactions;
+    testTransactions = new Transactions();
   });
 
   describe('testing deposit function', () => {
@@ -48,10 +48,13 @@ describe('testing Transactions class', () => {
     })
   })
 
-  describe('testing print function', () => {
-    test('testing print format is correct with one withdrawal transaction', () =>{
-      testTransactions.withdraw(500, '14-01-2012')
-      expect(testTransactions.getBankStatement()).toEqual('date || credit || debit || balance\n14/01/2012 || || 500.00 || -500.00\n')
+  describe('testing getStatement function', () => {
+    test('testing statement.print() is called', () =>{
+      const statement = new Statement()
+      const spy = jest.spyOn(statement, 'print')
+      const test = new Transactions(statement)
+      test.getBankStatement()
+      expect(spy).toHaveBeenCalled();
     })
 
     test('testing print format is correct with one deposit transaction', () =>{
