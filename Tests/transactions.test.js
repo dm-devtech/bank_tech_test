@@ -12,12 +12,15 @@ describe('testing Transactions class', () => {
     test('testing newStatement.print() is called', () =>{
       const statement = new Statement()
       const spy = jest.spyOn(statement, 'print')
-      const test = new Transactions(statement)
-      test.getBankStatement()
+      const testTransactions = new Transactions(statement)
+      testTransactions.getBankStatement()
       expect(spy).toHaveBeenCalled();
     })
 
     test('testing print format is correct with one deposit transaction', () =>{
+      const statement = new Statement()
+      const testTransactions = new Transactions(statement)
+      const spy = jest.spyOn(testTransactions, 'getBankStatement')
       testTransactions.deposit(2000, '11-01-2012')
       expect(testTransactions.getBankStatement()).toEqual('date || credit || debit || balance\n11/01/2012 || 2000.00 || || 2000.00\n')
     })

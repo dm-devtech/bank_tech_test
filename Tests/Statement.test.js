@@ -1,31 +1,29 @@
-import Transactions from '../src/Transactions.js'
 import Statement from '../src/Statement.js'
 
 describe('PrintStatement class', () => {
-  let testTransactions;
   let testStatement;
 
   beforeEach(() => {
-    testTransactions = new Transactions();
     testStatement = new Statement();
   });
 
+  describe('testing convertToDecimal', () => {
+    test('test string of numbers is converted to a string with 2 decimal places', () =>{
+      expect(testStatement.convertToDecimal('500')).toEqual("500.00")
+    })
+  })
+
   describe('testing print function', () => {
     test('testing print format is correct with one withdrawal transaction', () =>{
-      testTransactions.withdraw(500, '14-01-2012')
-      expect(testTransactions.getBankStatement()).toEqual('date || credit || debit || balance\n14/01/2012 || || 500.00 || -500.00\n')
+      expect(testStatement.print([{date: '14/01/2012', amount: 500, type: 'withdraw'}], [-500])).toEqual('date || credit || debit || balance\n14/01/2012 || || 500.00 || -500.00\n')
     })
 
     test('testing print format is correct with one deposit transaction', () =>{
-      testTransactions.deposit(500, '14-01-2012')
-      expect(testTransactions.getBankStatement()).toEqual('date || credit || debit || balance\n14/01/2012 || 500.00 || || 500.00\n')
+      expect(testStatement.print([{date: '14/01/2012', amount: 500, type: 'deposit'}], [500])).toEqual('date || credit || debit || balance\n14/01/2012 || 500.00 || || 500.00\n')
     })
 
     test('testing printed statement is correct with multiple transactions', () =>{
-      testTransactions.deposit(1000, '10-01-2012')
-      testTransactions.deposit(2000, '13-01-2012')
-      testTransactions.withdraw(500, '14-01-2012')
-      expect(testTransactions.getBankStatement()).toEqual('date || credit || debit || balance\n14/01/2012 || || 500.00 || 2500.00\n13/01/2012 || 2000.00 || || 3000.00\n10/01/2012 || 1000.00 || || 1000.00\n')
+      expect(testStatement.print([{date: '10/01/2012', amount: 1000, type: 'deposit'}, {date: '13/01/2012', amount: 2000, type: 'deposit'}, {date: '14/01/2012', amount: 500, type: 'withdraw'}], [1000, 3000, 2500])).toEqual('date || credit || debit || balance\n14/01/2012 || || 500.00 || 2500.00\n13/01/2012 || 2000.00 || || 3000.00\n10/01/2012 || 1000.00 || || 1000.00\n')
     })
   })
 
