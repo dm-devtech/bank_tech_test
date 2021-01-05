@@ -36,13 +36,13 @@ newTransactions.getBankStatement()
 6. To see coverage run jest --coverage
 
 ### Test coverage
------------------|---------|----------|---------|---------|-------------------
+
 File             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 -----------------|---------|----------|---------|---------|-------------------
 All files        |     100 |    80.95 |     100 |     100 |                   
  Statement.js    |     100 |       75 |     100 |     100 | 13                
  Transactions.js |     100 |    82.35 |     100 |     100 | 16,22,32          
------------------|---------|----------|---------|---------|-------------------
+
 
 ### Edge cases
 - User cannot enter negative number to withdraw() or deposit()
