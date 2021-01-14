@@ -11,12 +11,18 @@ export default class Statement {
     for (let i = allTransactions.length - 1; i >= 0; i--) {
       const transaction = allTransactions[i];
       if(transaction.type === 'withdraw') {
-        statementDetail += `${transaction.date} || || ${this.toDecimal(transaction.amount)} || ${this.toDecimal(balancePerTransaction[i])}\n`
+        statementDetail += this.withdrawDetail(transaction, balancePerTransaction, i)
       } else if(allTransactions[i]['type'] === 'deposit') {
         statementDetail += `${transaction.date} || ${this.toDecimal(transaction.amount)} || || ${this.toDecimal(balancePerTransaction[i])}\n`
       }
     }
     return statementHeader+statementDetail
   }
+
+  withdrawDetail(transaction, balancePerTransaction, iteration) {
+    return `${transaction.date} || || ${this.toDecimal(transaction.amount)} || ${this.toDecimal(balancePerTransaction[iteration])}\n`
+  }
+
+
 
 }

@@ -9,7 +9,7 @@ describe('PrintStatement class', () => {
 
   describe('testing convertToDecimal', () => {
     test('test string of numbers is converted to a string with 2 decimal places', () =>{
-      expect(testStatement.convertToDecimal('500')).toEqual("500.00")
+      expect(testStatement.toDecimal('500')).toEqual("500.00")
     })
   })
 
