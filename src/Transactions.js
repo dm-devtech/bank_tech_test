@@ -1,6 +1,6 @@
-'use strict'
-
 import Statement from '../src/Statement.js'
+
+'use strict'
 
 export default class Transactions {
 

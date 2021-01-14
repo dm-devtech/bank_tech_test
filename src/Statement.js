@@ -8,7 +8,7 @@ export default class Statement {
 
   print(allTransactions, balancePerTransaction) {
     let [statementHeader, statementDetail] = ["date || credit || debit || balance\n", ""]
-    
+
     for (let i = allTransactions.length - 1; i >= 0; i--) {
       const transaction = allTransactions[i];
       if(transaction.type === 'withdraw') {

@@ -2,18 +2,24 @@
 
 ### Technologies used
 - Javascript
+- Node
 
 ### Testing Framework
 - Jest (with Babel)
 
-### Instructions to run program in browser console:
+### Instructions:
+#### Running the local server
 1. To run the program clone the repo to your local directory
-2. Copy of the path of the index.html file and paste into your web browser
-3. Open your web browser console (via right clicking then click inspect on the page)
-4. In the console create a new instance of the Transactions class and name it.  e.g newTransactions = new Transactions
-5. To deposit an amount using the above instance you should enter newTransactions.deposit(amount, date).  Amount should be a number and date should be in the STRING format 'DD-MM-YYYY'
-6. To withdraw an amount using the above instance you should enter newTransactions.withdraw(amount, date).  Amount should be a number and date should be in the STRING format 'DD-MM-YYYY'.
-7. To print a statement using the same instance as above enter newTransactions.getBankStatement().  
+2. run npm install
+3. run npx http-server
+4. go to localhost:8080 in your browser
+
+#### Using the program:
+1. Open your web browser console (right click the page, then click inspect)
+2. In the console create a new instance of the Transactions class and name it.  e.g newTransactions = new Transactions
+3. To deposit an amount enter newTransactions.deposit(amount, date).  Amount should be a number and date should be in the STRING format 'DD-MM-YYYY'
+4. To withdraw an amount enter newTransactions.withdraw(amount, date).  Amount should be a number and date should be in the STRING format 'DD-MM-YYYY'.
+5. To print a statement in the console enter newTransactions.getBankStatement().  
 
 ### Browser Console Code Example:
 ```
@@ -28,12 +34,10 @@ newTransactions.getBankStatement()
 ```
 
 ### Running tests
-1. Clone repo to your local directory if you have not already
-2. Install Jest/Babel
-3. Amend line 1 in each class file (src/Statement.js and src/Transactions.js)to 'export default class <class name>'.  'class Transactions' would become 'export default class Transactions'  The same would have to be done for the Statement.js file
-4. In src/Transactions.js add the line: 'import Statement from '../src/Statement.js'
-5. In the terminal run 'npm test'
-6. To see coverage run jest --coverage
+1. Clone repo to your local directory (if you have not already)
+2. run 'npm install'
+3. In the terminal run 'npm t' to run the tests
+4. To see coverage run jest --coverage
 
 ### Test coverage
 
