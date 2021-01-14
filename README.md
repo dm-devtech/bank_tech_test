@@ -59,3 +59,5 @@ All files        |     100 |    80.95 |     100 |     100 |
 - As a user so that I can see my account status I need to print a bank statement of my transactions
 - As a user so that I can see the movements on my account I need to see a balance on my statement that updates for each transaction
 - As a user so that I can identify deposits and withdrawals on my statement, withdrawals should be debits and deposits should be credits
+
+[Tech Test specifications](https://github.com/makersacademy/course/blob/master/individual_challenges/bank_tech_test.md)
