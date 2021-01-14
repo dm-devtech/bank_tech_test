@@ -10,16 +10,19 @@ export default class Transactions {
     this.newStatement = newStatement
   }
 
+  errorMessages(amount, date) {
+    if (amount < 0) throw new Error('You cannot enter a negative number')
+    if (date.split("").includes("/"||".")) throw new Error('Date format should be DD-MM-YYYY')
+  }
+
   deposit(amount, date) {
-    if (amount < 0) throw new Error('You cannot enter a negative number');
-    if (date.split("").includes("/"||".")) throw new Error('Date format should be DD-MM-YYYY');
+    this.errorMessages(amount, date)
     let newDateFormat = date.replace("-", "/").replace("-", "/")
     this.allTransactions.push({date: newDateFormat, type: 'deposit', amount: amount})
   }
 
   withdraw(amount, date) {
-    if (amount < 0) throw new Error('You cannot enter a negative number')
-    if (date.split("").includes("/"||".")) throw new Error('Date format should be DD-MM-YYYY')
+    this.errorMessages(amount, date)
     let newDateFormat = date.replace("-", "/").replace("-", "/")
     this.allTransactions.push({date: newDateFormat, type: 'withdraw', amount: amount})
   }
