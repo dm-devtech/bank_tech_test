@@ -15,16 +15,18 @@ export default class Transactions {
     if (date.split("").includes("/"||".")) throw new Error('Date format should be DD-MM-YYYY')
   }
 
+  reformatDate(date) {
+    return date.replace("-", "/").replace("-", "/")
+  }
+
   deposit(amount, date) {
     this.errorMessages(amount, date)
-    let newDateFormat = date.replace("-", "/").replace("-", "/")
-    this.allTransactions.push({date: newDateFormat, type: 'deposit', amount: amount})
+    this.allTransactions.push({date: this.reformatDate(date), type: 'deposit', amount: amount})
   }
 
   withdraw(amount, date) {
     this.errorMessages(amount, date)
-    let newDateFormat = date.replace("-", "/").replace("-", "/")
-    this.allTransactions.push({date: newDateFormat, type: 'withdraw', amount: amount})
+    this.allTransactions.push({date: this.reformatDate(date), type: 'withdraw', amount: amount})
   }
 
   balanceUpdate() {
