@@ -10,9 +10,9 @@
 ### Instructions:
 #### Running the local server
 1. To run the program clone the repo to your local directory
-2. run npm install
-3. run npx http-server
-4. go to localhost:8080 in your browser
+2. Run npm install
+3. Run npx http-server
+4. Go to localhost:8080 in your browser
 
 #### Using the program:
 1. Open your web browser console (right click the page, then click inspect)
@@ -35,7 +35,7 @@ newTransactions.getBankStatement()
 
 ### Running tests
 1. Clone repo to your local directory (if you have not already)
-2. run 'npm install'
+2. Run 'npm install'
 3. In the terminal run 'npm t' to run the tests
 4. To see coverage run jest --coverage
 
