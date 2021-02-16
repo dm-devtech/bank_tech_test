@@ -7,12 +7,6 @@ describe('PrintStatement class', () => {
     testStatement = new Statement();
   });
 
-  describe('testing convertToDecimal', () => {
-    test('test string of numbers is converted to a string with 2 decimal places', () =>{
-      expect(testStatement.toDecimal('500')).toEqual("500.00")
-    })
-  })
-
   describe('testing print function', () => {
     test('testing print format is correct with one withdrawal transaction', () =>{
       expect(testStatement.print([{date: '14/01/2012', amount: 500, type: 'withdraw'}], [-500])).toEqual('date || credit || debit || balance\n14/01/2012 || || 500.00 || -500.00\n')
