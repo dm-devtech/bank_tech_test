@@ -3,8 +3,9 @@
 class Transactions {
 
   constructor(newStatement = new Statement()) {
-    this.allTransactions = []
+    this.newTransactions = []
     this.balance = 0
+    this.balances = []
     this.newStatement = newStatement
   }
 
@@ -19,27 +20,34 @@ class Transactions {
 
   deposit(amount, date) {
     this.#errorMessages(amount, date)
-    this.allTransactions.push({date: this.#reformatDate(date), type: 'deposit', amount: amount})
+    this.newTransactions.push({date: this.#reformatDate(date), type: 'deposit', amount: amount, status: "new"})
   }
 
   withdraw(amount, date) {
     this.#errorMessages(amount, date)
-    this.allTransactions.push({date: this.#reformatDate(date), type: 'withdraw', amount: amount})
+    this.newTransactions.push({date: this.#reformatDate(date), type: 'withdraw', amount: amount, status: "new"})
   }
 
-  #balanceUpdate() {
-    return this.allTransactions.map((transaction) => {
-      if (transaction.type === 'deposit') {
-        return this.balance += transaction.amount
-      } else if (transaction.type === 'withdraw') {
-        return this.balance -= transaction.amount
-      }
+  balanceUpdate() {
+    return this.newTransactions.map((transaction, index) => {
+      if (transaction.type === 'deposit' && transaction.status === "new") {
+        transaction['status'] = "historical"
+        this.balance += transaction.amount
+        this.balances.push(this.balance)
+        return this.balances[index]
+      } else if (transaction.type === 'withdraw' && transaction.status === "new") {
+        transaction['status'] = "historical"
+        this.balance -= transaction.amount
+        this.balances.push(this.balance)
+        return this.balances[index]
+      } else if (transaction.status === "historical")
+        return this.balances[index]
     })
   }
 
   getBankStatement() {
-    const balancePerTransaction = this.#balanceUpdate()
-    return this.newStatement.print(this.allTransactions, balancePerTransaction)
+    const balancePerTransaction = this.balanceUpdate()
+    return this.newStatement.print(this.newTransactions, balancePerTransaction)
   }
 
 }

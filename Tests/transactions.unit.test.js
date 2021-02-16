@@ -22,6 +22,7 @@ describe('testing Transactions class', () => {
       const testTransactions = new Transactions(statement)
       const spy = jest.spyOn(testTransactions, 'getBankStatement')
       testTransactions.deposit(2000, '11-01-2012')
+
       expect(testTransactions.getBankStatement()).toEqual('date || credit || debit || balance\n11/01/2012 || 2000.00 || || 2000.00\n')
     })
 
