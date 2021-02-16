@@ -1,4 +1,4 @@
-## Bank Tech Test
+## Bank Account Statement Program
 
 ### Technologies used
 - Javascript
