@@ -1,11 +1,13 @@
 'use strict'
 
-class Transactions {
+import Statement from './Statement.js'
+
+export default class Transactions {
 
   constructor(newStatement = new Statement()) {
     this.newTransactions = []
     this.balance = 0
-    this.balances = []
+    this.balanceHistory = []
     this.newStatement = newStatement
   }
 
@@ -33,15 +35,15 @@ class Transactions {
       if (transaction.type === 'deposit' && transaction.status === "new") {
         this.updateTransactionStatus(transaction)
         this.balance += transaction.amount
-        this.balances.push(this.balance)
-        return this.balances[index]
+        this.balanceHistory.push(this.balance)
+        return this.balanceHistory[index]
       } else if (transaction.type === 'withdraw' && transaction.status === "new") {
         this.updateTransactionStatus(transaction)
         this.balance -= transaction.amount
-        this.balances.push(this.balance)
-        return this.balances[index]
+        this.balanceHistory.push(this.balance)
+        return this.balanceHistory[index]
       } else if (transaction.status === "historical")
-        return this.balances[index]
+        return this.balanceHistory[index]
     })
   }
 
