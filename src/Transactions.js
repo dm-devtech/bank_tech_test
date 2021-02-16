@@ -31,18 +31,22 @@ class Transactions {
   balanceUpdate() {
     return this.newTransactions.map((transaction, index) => {
       if (transaction.type === 'deposit' && transaction.status === "new") {
-        transaction['status'] = "historical"
+        this.updateTransactionStatus(transaction)
         this.balance += transaction.amount
         this.balances.push(this.balance)
         return this.balances[index]
       } else if (transaction.type === 'withdraw' && transaction.status === "new") {
-        transaction['status'] = "historical"
+        this.updateTransactionStatus(transaction)
         this.balance -= transaction.amount
         this.balances.push(this.balance)
         return this.balances[index]
       } else if (transaction.status === "historical")
         return this.balances[index]
     })
+  }
+
+  updateTransactionStatus(transaction) {
+    transaction['status'] = "historical"
   }
 
   getBankStatement() {
