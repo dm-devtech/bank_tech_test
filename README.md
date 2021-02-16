@@ -35,7 +35,7 @@ newTransactions.getBankStatement()
 
 ### Running tests
 1. Clone repo to your local directory (if you have not already)
-2. Run 'npm install'
+2. Ensure class files are exported as modules then Run 'npm install'
 3. In the terminal run 'npm t' to run the tests
 4. To see coverage run jest --coverage
 
