@@ -3,14 +3,15 @@ import Statement from '../src/Statement.js'
 
 describe('Feature testing', () => {
   let testTransactions;
+  let statement
 
   beforeEach(() => {
     testTransactions = new Transactions();
+    statement = new Statement()
   });
 
   describe('testing output with multiple Transactions', () => {
     test('testing output of 8 transactions', () =>{
-      const statement = new Statement()
       testTransactions.deposit(800.00, '10-01-2012')
       testTransactions.deposit(2000.00, '11-01-2012')
       testTransactions.withdraw(400.00, '12-01-2012')
