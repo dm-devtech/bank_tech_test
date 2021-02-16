@@ -8,6 +8,10 @@ describe('testing Transactions class', () => {
     testTransactions = new Transactions();
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('testing getStatement function', () => {
     test('testing newStatement.print() is called', () =>{
       const statement = new Statement()
@@ -23,6 +27,7 @@ describe('testing Transactions class', () => {
       const spy = jest.spyOn(testTransactions, 'getBankStatement')
       testTransactions.deposit(2000, '11-01-2012')
       expect(testTransactions.getBankStatement()).toEqual('date || credit || debit || balance\n11/01/2012 || 2000.00 || || 2000.00\n')
+      expect(spy).toHaveBeenCalled();
     })
 
     test('testing printed statement is correct with multiple transactions', () =>{
