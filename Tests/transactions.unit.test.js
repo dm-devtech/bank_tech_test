@@ -3,9 +3,11 @@ import Statement from '../src/Statement.js'
 
 describe('testing Transactions class', () => {
   let testTransactions;
+  let statement
 
   beforeEach(() => {
-    testTransactions = new Transactions();
+    statement = new Statement()
+    testTransactions = new Transactions(statement);
   });
 
   afterEach(() => {
@@ -14,16 +16,12 @@ describe('testing Transactions class', () => {
 
   describe('testing getStatement function', () => {
     test('testing newStatement.print() is called', () =>{
-      const statement = new Statement()
       const spy = jest.spyOn(statement, 'print')
-      const testTransactions = new Transactions(statement)
       testTransactions.getBankStatement()
       expect(spy).toHaveBeenCalled();
     })
 
     test('testing print format is correct with one deposit transaction', () =>{
-      const statement = new Statement()
-      const testTransactions = new Transactions(statement)
       const spy = jest.spyOn(testTransactions, 'getBankStatement')
       testTransactions.deposit(2000, '11-01-2012')
       expect(testTransactions.getBankStatement()).toEqual('date || credit || debit || balance\n11/01/2012 || 2000.00 || || 2000.00\n')
