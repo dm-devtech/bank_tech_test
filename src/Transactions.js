@@ -1,8 +1,6 @@
 'use strict'
 
-import Statement from '../src/Statement.js'
-
-export default class Transactions {
+class Transactions {
 
   constructor(newStatement = new Statement()) {
     this.allTransactions = []
@@ -10,26 +8,26 @@ export default class Transactions {
     this.newStatement = newStatement
   }
 
-  errorMessages(amount, date) {
+  #errorMessages(amount, date) {
     if (amount < 0) throw new Error('You cannot enter a negative number')
     if (date.split("").includes("/"||".")) throw new Error('Date format should be DD-MM-YYYY')
   }
 
-  reformatDate(date) {
+  #reformatDate(date) {
     return date.replace("-", "/").replace("-", "/")
   }
 
   deposit(amount, date) {
-    this.errorMessages(amount, date)
-    this.allTransactions.push({date: this.reformatDate(date), type: 'deposit', amount: amount})
+    this.#errorMessages(amount, date)
+    this.allTransactions.push({date: this.#reformatDate(date), type: 'deposit', amount: amount})
   }
 
   withdraw(amount, date) {
-    this.errorMessages(amount, date)
-    this.allTransactions.push({date: this.reformatDate(date), type: 'withdraw', amount: amount})
+    this.#errorMessages(amount, date)
+    this.allTransactions.push({date: this.#reformatDate(date), type: 'withdraw', amount: amount})
   }
 
-  balanceUpdate() {
+  #balanceUpdate() {
     return this.allTransactions.map((transaction) => {
       if (transaction.type === 'deposit') {
         return this.balance += transaction.amount
@@ -40,7 +38,7 @@ export default class Transactions {
   }
 
   getBankStatement() {
-    const balancePerTransaction = this.balanceUpdate()
+    const balancePerTransaction = this.#balanceUpdate()
     return this.newStatement.print(this.allTransactions, balancePerTransaction)
   }
 
