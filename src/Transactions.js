@@ -1,8 +1,6 @@
 'use strict'
 
-import Statement from './Statement.js'
-
-export default class Transactions {
+class Transactions {
   #newTransactions;
   #balanceHistory;
   #newStatement;

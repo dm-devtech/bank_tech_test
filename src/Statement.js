@@ -1,6 +1,6 @@
 'use strict'
 
-export default class Statement {
+class Statement {
 
   #toDecimal(amount) {
     return Number(amount).toFixed(2)
